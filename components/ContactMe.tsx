@@ -21,6 +21,16 @@ export default function ContactMe({ pageInfo }: Props) {
   const formRef = useRef();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setFormShown(false);
+    try {
+      await emailjs.sendForm(
+        process.env.emailjsServiceID,
+        process.env.emailjsTemplateID,
+        formRef.current,
+        process.env.emailjsPublicKey
+      );
+    } catch (error) {
+      console.log("error sending form");
+    }
   };
   const isKeyboardOpen = useDetectKeyboardOpen();
 
