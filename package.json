@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
     "@heroicons/react": "^2.0.11",
     "@portabletext/react": "^1.0.6",
     "@sanity/image-url": "^1.0.1",
@@ -19,7 +20,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.36.1",
     "react-simple-typewriter": "^4.0.2",
-    "react-social-icons": "^5.14.0"
+    "react-social-icons": "^5.14.0",
+    "use-detect-keyboard-open": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "18.7.19",

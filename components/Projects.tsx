@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import React from "react";
 import { urlFor } from "../sanity";
 import { Project } from "../typings";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 type Props = { projects: Project[] };
 
@@ -38,16 +40,21 @@ export default function Projects({ projects }: Props) {
             />
 
             <div className="space-y-10 px-0 max-w-6xl">
-              <h4 className="text-3xl xl:text-4xl font-semibold text-center ">
+              <h4 className="text-3xl xl:text-4xl font-semibold text-center flex flex-col md:flex-row gap-2 justify-center items-center">
                 <span className="underline decoration-[#F7AB0A]/50">
                   Project {i + 1} of {projects?.length}:
                 </span>{" "}
-                {project?.title}
+                <span className="flex items-center gap-5">
+                  {project?.title}
+                  <Link href={project?.linkToBuild}>
+                    <ArrowUpRightIcon className="cursor-pointer w-5 h-5 hover:text-orange-400" />
+                  </Link>
+                </span>
               </h4>
               <div className="flex items-center justify-center space-x-2">
                 {project?.technologies.map((t) => (
                   <img
-                    className="h-10 w-10"
+                    className="h-10 w-10 object-cover rounded-full"
                     key={t._id}
                     src={urlFor(t.image).url()}
                     alt=""
@@ -55,9 +62,7 @@ export default function Projects({ projects }: Props) {
                 ))}
               </div>
 
-              <p className="text-lg text-center md:text-left">
-                {project?.summary}
-              </p>
+              <p className="text-lg text-center">{project?.summary}</p>
             </div>
           </div>
         ))}
